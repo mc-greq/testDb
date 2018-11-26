@@ -35,6 +35,13 @@ public class Main {
             insertContact(statement,"Jane", 78899124, "jane@gmail.com");
             insertContact(statement,"Joe", 349872112, "joe@gmail.com");
 
+            statement.execute("UPDATE " + TABLE_CONTACTS + " SET " +
+                    COLUMN_PHONE + " = 65123890" +
+                    " WHERE " + COLUMN_NAME + " = 'Jane'");
+
+            statement.execute("DELETE FROM " + TABLE_CONTACTS +
+                    " WHERE " + COLUMN_NAME + " ='Joe'");
+
 //            statement.execute("INSERT INTO contacts (name, phone, email)"+
 //                                    " VALUES ('Marta', 12344521, 'marta@gmail.com')");
 //            statement.execute("INSERT INTO contacts (name, phone, email)"+
