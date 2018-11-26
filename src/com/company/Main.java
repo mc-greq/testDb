@@ -30,40 +30,10 @@ public class Main {
                         COLUMN_EMAIL + " text" +
                     ")");
 
-            statement.execute("INSERT  INTO " + TABLE_CONTACTS +
-                    " (" + COLUMN_NAME + ", "+
-                            COLUMN_PHONE + ", " +
-                            COLUMN_EMAIL +
-                    ") " +
-                    "VALUES('Greg', 65432182, 'greq@gmail.com')");
-
-            statement.execute("INSERT  INTO " + TABLE_CONTACTS +
-                    " (" + COLUMN_NAME + ", "+
-                    COLUMN_PHONE + ", " +
-                    COLUMN_EMAIL +
-                    ") " +
-                    "VALUES('Marta', 45345671, 'marta@gmail.com')");
-
-            statement.execute("INSERT  INTO " + TABLE_CONTACTS +
-                    " (" + COLUMN_NAME + ", "+
-                    COLUMN_PHONE + ", " +
-                    COLUMN_EMAIL +
-                    ") " +
-                    "VALUES('Jane', 78899124, 'jane@gmail.com')");
-
-            statement.execute("INSERT  INTO " + TABLE_CONTACTS +
-                    " (" + COLUMN_NAME + ", "+
-                    COLUMN_PHONE + ", " +
-                    COLUMN_EMAIL +
-                    ") " +
-                    "VALUES('Joe', 349872112, 'joe@gmail.com')");
-
-            statement.execute("UPDATE " + TABLE_CONTACTS + " SET " +
-                    COLUMN_PHONE + " = 65123890" +
-                    " WHERE " + COLUMN_NAME + " = 'Jane'");
-
-            statement.execute("DELETE FROM " + TABLE_CONTACTS +
-                    " WHERE " + COLUMN_NAME + " ='Joe'");
+            insertContact(statement,"Greg", 65432182, "greq@gmail.com");
+            insertContact(statement,"Marta", 45345671, "marta@gmail.com");
+            insertContact(statement,"Jane", 78899124, "jane@gmail.com");
+            insertContact(statement,"Joe", 349872112, "joe@gmail.com");
 
 //            statement.execute("INSERT INTO contacts (name, phone, email)"+
 //                                    " VALUES ('Marta', 12344521, 'marta@gmail.com')");
@@ -94,4 +64,14 @@ public class Main {
             e.printStackTrace();
         }
     }
+
+    private static void insertContact(Statement statement, String name, int phone, String email) throws SQLException{
+        statement.execute("INSERT  INTO " + TABLE_CONTACTS +
+                " (" + COLUMN_NAME + ", "+
+                COLUMN_PHONE + ", " +
+                COLUMN_EMAIL +
+                ") " +
+                "VALUES('" + name + "', " + phone + " , '" + email + "')");
+    }
+
 }
